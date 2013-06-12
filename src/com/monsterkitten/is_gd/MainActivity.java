@@ -1,19 +1,19 @@
 package com.monsterkitten.is_gd;
 
 /* 
- “We go about our daily lives understanding almost 
+ ï¿½We go about our daily lives understanding almost 
  nothing of the world. We give little thought to the 
  machinery that generates the sunlight that makes life 
  possible, to the gravity that glues us to an Earth that 
  would otherwise send us spinning off into space, or to 
  the atoms of which we are made and on whose stability 
  we fundamentally depend. Except for children (who 
- don’t know enough not to ask the important questions), 
+ donï¿½t know enough not to ask the important questions), 
  few of us spend much time wondering why nature is the 
  way it is; where the cosmos came from, or whether it is 
  always here; if time will one day flow backward and
  effects precede causes; or whether there are ultimate 
- limits to what humans can know.” 
+ limits to what humans can know.ï¿½ 
  */
 
 import java.io.BufferedReader;
@@ -138,7 +138,7 @@ public class MainActivity extends Activity {
 			//TODO: Fix clipboard
 			//ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
 			//clipboard.setText(result); //deprecated, but I can't be arsed to fix it
-			Toast mainToast = Toast.makeText(getAppContext(), result, Toast.LENGTH_SHORT); /*replace result with R.string.copiedToClip*/
+			Toast mainToast = Toast.makeText(getAppContext(), result, Toast.LENGTH_SHORT); //Replace result with R.string.copiedToClip
 			mainToast.show();
 		}
 	}	

@@ -45,13 +45,12 @@
         android:src="@drawable/logo" />
 
 	<com.google.ads.AdView android:id="@+id/adView"
-         				   android:layout_width="match_parent"
-         				   android:layout_height="wrap_content"
-         				   android:layout_centerHorizontal="true"
-         				   android:layout_alignParentBottom="true"
+            			   android:layout_width="match_parent"
+          			   	   android:layout_height="match_parent"
+          				   android:layout_alignParentBottom="true"
          		           ads:adUnitId="a151b7d83a47832"
          				   ads:adSize="BANNER" 
          				   ads:loadAdOnCreate="true" 
-         				   ads:testDevices="00EFDBABA78A54FE3E10D99B5BF3FBEF"/> 
+         				   ads:testDevices="00EFDBABA78A54FE3E10D99B5BF3FBEF, DFDDEB3F9D1A93723AB6B7D2A39BD17B, 8169323F257477B3E3041A64ACC22B71"/>  <!--  N4, N7, TB  -->
 
 </RelativeLayout>
