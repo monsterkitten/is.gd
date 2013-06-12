@@ -25,12 +25,13 @@ import java.net.URLEncoder;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -86,7 +87,7 @@ public class MainActivity extends Activity {
 			try {
 			    startActivity(Intent.createChooser(i, "Send mail..."));
 			} catch (android.content.ActivityNotFoundException ex) {
-			    Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+			    Toast.makeText(MainActivity.this, R.string.noEC, Toast.LENGTH_SHORT).show();
 			}
 			return true;
 		case R.id.menu_git:
@@ -125,20 +126,22 @@ public class MainActivity extends Activity {
 			
 		} if (result =="MURLException") {
 			
-			Toast toast = Toast.makeText(getAppContext(), "Bad URL.", Toast.LENGTH_LONG);
+			Toast toast = Toast.makeText(getAppContext(), R.string.badURL, Toast.LENGTH_LONG);
 			toast.show();
 			
 		} if (result == "IOExceptionOriginal") {
 			
-			Toast toast = Toast.makeText(getAppContext(), "The specified website does not exist or can't be reached.", Toast.LENGTH_LONG);
+			Toast toast = Toast.makeText(getAppContext(), R.string.doesNotExist, Toast.LENGTH_LONG);
 			toast.show();
 			
 		} else {
 		
-			//TODO: Fix clipboard
-			//ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
-			//clipboard.setText(result); //deprecated, but I can't be arsed to fix it
-			Toast mainToast = Toast.makeText(getAppContext(), result, Toast.LENGTH_SHORT); //Replace result with R.string.copiedToClip
+            Context mainAppContext = getAppContext();                                                         //
+            ClipboardManager clipboard = (ClipboardManager)mainAppContext.getSystemService(CLIPBOARD_SERVICE);//
+            Uri shortenedUri = Uri.parse(result);                                                             // THANK YOU DEVNULL
+            ClipData clipUri = ClipData.newRawUri("is.gd", shortenedUri);                                     //
+            clipboard.setPrimaryClip(clipUri);                                                                //
+            Toast mainToast = Toast.makeText(getAppContext(), R.string.copiedToClip, Toast.LENGTH_SHORT);   
 			mainToast.show();
 		}
 	}	
@@ -181,7 +184,6 @@ class GetData extends AsyncTask<String, String, String> {
 		    while ((str = in.readLine()) != null) {
 		    // str is one line of text; readLine() strips the newline character(s)
 			    in.close();
-			    Log.d("Monsterkitten", "HTTP code here");
 			    Log.d("Monsterkitten", "Stream closed");
 			    Log.d("Monsterkitten", "Short URL is '" + str +"'");
 			    return str;

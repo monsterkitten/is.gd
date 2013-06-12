@@ -14,4 +14,7 @@
     <string name="copiedToClip">Short URL copied to clipboard!</string>
     <string name="gotError">Received error message</string>
 	<string name="connectionError">Connection error.</string>
+	<string name="doesNotExist">The specified website does not exist or can\'t be reached.</string>
+	<string name="badURL">Bad URL.</string>
+	<string name="noEC">There are no email clients installed.</string>
 </resources>

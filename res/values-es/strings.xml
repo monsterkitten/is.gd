@@ -18,5 +18,9 @@
     <string name="connectError">Hubo un error al conectar, por favor intente de nuevo.</string>
     <string name="copiedToClip">URL abreviaba copiada al portapapeles!</string>
     <string name="gotError">Recibido mensaje de error</string>
-	<string name="connectionError">Error de conexi&#243;n.</string> <!-- Thanks devnull for helping with the encoding -->
+	<string name="connectionError">Error de conexi&#243;n.</string> <!-- Thanks devnull for helping with the encoding of the o with acute accent -->
+	<string name="badURL">Mala URL.</string>
+	<!-- TODO: Add these translations -->
+	<string name="doesNotExist">The specified website does not exist or can\'t be reached.</string> 
+	<string name="noEC">There are no email clients installed.</string>
 </resources>
