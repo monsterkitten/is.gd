@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">is.gd</string>
+    <string name="menu_go">Shorten URL</string>
+    <string name="editText1text">Enter URL</string>
+    <string name="logo_desc">TinyWin logo</string>
+    <string name="git">Github</string>
+    <string name="email">Email developer</string>
+    <string name="play">Play Store</string>
+    <string name="http">Please enter the full URL (Including http://)!</string>
+    <string name="license">Apache 2.0 license</string>
+    <string name="connectError">There was an error connecting. Please try again.</string>
+    <string name="copiedToClip">Short URL copied to clipboard!</string>
+    <string name="gotError">Received error message</string>
+	<string name="connectionError">Connection error.</string>
+</resources>
