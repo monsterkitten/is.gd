@@ -1,19 +1,19 @@
 package com.monsterkitten.is_gd;
 
 /* 
- �We go about our daily lives understanding almost 
+ "We go about our daily lives understanding almost
  nothing of the world. We give little thought to the 
  machinery that generates the sunlight that makes life 
  possible, to the gravity that glues us to an Earth that 
  would otherwise send us spinning off into space, or to 
  the atoms of which we are made and on whose stability 
  we fundamentally depend. Except for children (who 
- don�t know enough not to ask the important questions), 
+ don't know enough not to ask the important questions), 
  few of us spend much time wondering why nature is the 
  way it is; where the cosmos came from, or whether it is 
  always here; if time will one day flow backward and
  effects precede causes; or whether there are ultimate 
- limits to what humans can know.� 
+ limits to what humans can know."
  */
 
 import java.io.BufferedReader;
