@@ -1,3 +1,10 @@
+
+
+
+		//TODO: Migrate to HttpClient to properly handle HTTP response codes, as URL does not and thus I have to guess at what an IOException means.
+
+
+
 package com.monsterkitten.is_gd;
 
 /* 
@@ -25,6 +32,7 @@ import java.net.URLEncoder;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -36,7 +44,9 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.ads.AdRequest;
@@ -46,18 +56,25 @@ import com.google.ads.AdView;
 public class MainActivity extends Activity {
 
     public static Context context;
+    static String shortURLv;
+    static ProgressDialog dialog;
+    static ProgressBar mProgress;
+    
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// Set main layout
 		setContentView(R.layout.activity_main);
 	    MainActivity.context = getApplicationContext();
 		EditText edit = (EditText) findViewById(R.id.editText1);
 		edit.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+		EditText edit1 = (EditText) findViewById(R.id.editText2);
+		edit1.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 		AdView adview = (AdView)findViewById(R.id.adView);
 		AdRequest req = new AdRequest();
 		adview.loadAd(req);
+		mProgress = (ProgressBar) findViewById(R.id.progressBar1);
+		mProgress.setVisibility(View.INVISIBLE);
 	
 	}
 
@@ -78,7 +95,6 @@ public class MainActivity extends Activity {
 		case R.id.menu_go:
 			PreHTTPGet();
 			return true;
-
 		case R.id.menu_email:
 			Intent i = new Intent(Intent.ACTION_SEND);
 			i.setType("message/rfc822");
@@ -107,19 +123,9 @@ public class MainActivity extends Activity {
 		}
     }
 
-	
-	public void PreHTTPGet() {
-
-		// UrlValidator urlValidator = new UrlValidator();
-		// urlValidator.isValid(edit.getText().toString());
-		EditText edit = (EditText) findViewById(R.id.editText1);
-		new GetData().execute(edit.getText().toString());
-
-	}
-	
-
 	public static void done(String result) {
 		
+		mProgress.setVisibility(View.INVISIBLE);
 		if(result == "IOException") {
 			Toast toast = Toast.makeText(getAppContext(), R.string.connectError, Toast.LENGTH_LONG);
 			toast.show();
@@ -134,29 +140,70 @@ public class MainActivity extends Activity {
 			Toast toast = Toast.makeText(getAppContext(), R.string.doesNotExist, Toast.LENGTH_LONG);
 			toast.show();
 			
-		} else {
-		
-            Context mainAppContext = getAppContext();                                                         //
-            ClipboardManager clipboard = (ClipboardManager)mainAppContext.getSystemService(CLIPBOARD_SERVICE);//
-            Uri shortenedUri = Uri.parse(result);                                                             // THANK YOU DEVNULL
-            ClipData clipUri = ClipData.newRawUri("is.gd", shortenedUri);                                     //
-            clipboard.setPrimaryClip(clipUri);                                                                //
-            Toast mainToast = Toast.makeText(getAppContext(), R.string.copiedToClip, Toast.LENGTH_SHORT);   
-			mainToast.show();
+		} if(( ! (result.equals("IOException"))) && ( ! (result.equals("MURLException"))) && ( ! (result.equals("IOExceptionOriginal")))) {
+			finish(result);
 		}
 	}	
-		
-		////////////////////////////// HELPER METHODS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	
+	public static Context getAppContext() {
+		return MainActivity.context;
+	}
 
-			public static Context getAppContext() {
-				return MainActivity.context;
-			}
+	public void PreHTTPGet() {
+		// UrlValidator urlValidator = new UrlValidator();
+		// urlValidator.isValid(edit.getText().toString());
+		mProgress.setVisibility(View.VISIBLE);
+		EditText longURL = (EditText) findViewById(R.id.editText1);
+		EditText shortURL = (EditText) findViewById(R.id.editText2);
+		shortURLv = shortURL.getText().toString();
+		int length = shortURLv.length();
+		Log.d("Monsterkitten", "Length is " + length);
+		if((length < 31)||(length > 4)||(length == 0)) {
+			new GetData().execute(longURL.getText().toString(), shortURLv);
+
+		} else {
+            Toast toast = Toast.makeText(getAppContext(), R.string.badLength, Toast.LENGTH_SHORT);   
+            toast.show();
+		}
+	}
+	
+	public static void finish(String result) {
+		
+		if(((result.equals("http://is.gd/" + shortURLv)) || (shortURLv.equals("")))) {
+        Context mainAppContext = getAppContext();                                                         //
+        ClipboardManager clipboard = (ClipboardManager)mainAppContext.getSystemService(CLIPBOARD_SERVICE);//
+        Uri shortenedUri = Uri.parse(result);                                                             // THANK YOU DEVNULL
+        ClipData clipUri = ClipData.newRawUri("is.gd", shortenedUri);                                     //
+        clipboard.setPrimaryClip(clipUri);                                                                //
+        Toast mainToast = Toast.makeText(getAppContext(), R.string.copiedToClip, Toast.LENGTH_SHORT);   
+		mainToast.show();
+		mProgress.setVisibility(View.INVISIBLE);
+		} else {
+			mProgress.setVisibility(View.INVISIBLE);
+			Log.d("Monsterkitten", "URL taken");
+            Toast toast = Toast.makeText(getAppContext(), R.string.URLTaken, Toast.LENGTH_SHORT);   
+			toast.show();
+		}
+	}
+	void PDShowM() {
+		ProgressDialog dialog;
+		ProgressDialog.show(MainActivity.this, "Shortening", "Please wait...");
+	}
 }
 
 class GetData extends AsyncTask<String, String, String> {
 	
+    ProgressDialog dialog;
+
+    Toast msg;
+	
     protected String doInBackground(String... params) {
     	   
+    	String shorturl = "";
+    	if ( ! (params[1].equals(""))) { 
+    		Log.d("Monsterkitten", "Params[1] is '" + params[1] + "'");
+    		shorturl = "&shorturl=" + params[1];
+    	}
     	//Make sure the site exists and the URL is well-formed
     	//The former is for the sake of is.gd
     	try {
@@ -168,12 +215,12 @@ class GetData extends AsyncTask<String, String, String> {
 				return "MURLException";
 			} catch (IOException ex) {
 				return "IOExceptionOriginal";
-			}
+			} 
     	
 	    try {
 			// Create a URL for the desired page
 			@SuppressWarnings("deprecation")
-			String finalURL ="http://is.gd/create.php?format=simple&url=" + URLEncoder.encode(params[0]);
+			String finalURL ="http://is.gd/create.php?format=simple&url=" + URLEncoder.encode(params[0]) + shorturl;
 			Log.d("Monsterkitten", "Variable finalURL set. (" + finalURL + ")");
 		    URL url = new URL(finalURL);
 
@@ -193,9 +240,12 @@ class GetData extends AsyncTask<String, String, String> {
 			return "IOException";
 		}
 	}
-
+    
     protected void onPostExecute(String result) {
- 
+        if(dialog!=null)
+        {
+            dialog.dismiss();
+        }
     	MainActivity.done(result);
     	
     }

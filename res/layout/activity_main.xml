@@ -10,18 +10,6 @@
     tools:context=".MainActivity"
     android:id="@+id/mainLayout" >
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/editText1text" >
-
-    </EditText>
-
 
 <!-- Not needed for is.gd, their service can handle requests with or without http://(www.)
 	 It is needed, however, for the check for a correctly formed URL, so we'll keep it. -->
@@ -36,22 +24,75 @@
         android:text="@string/http"
         android:textColor="#6d6d6d" />
 
-    <ImageView
+    <!-- <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo" /> -->
 
 	<com.google.ads.AdView android:id="@+id/adView"
          				   android:layout_width="wrap_content"
          				   android:layout_height="wrap_content"
          				   android:layout_centerHorizontal="true"
-         				   android:layout_alignParentBottom="true"
+         				   android:layout_alignParentTop="true"
          		           ads:adUnitId="a151b7d83a47832"
          				   ads:adSize="BANNER" 
          				   ads:loadAdOnCreate="true" 
          				   ads:testDevices="00EFDBABA78A54FE3E10D99B5BF3FBEF, DFDDEB3F9D1A93723AB6B7D2A39BD17B, 8169323F257477B3E3041A64ACC22B71"/>  <!--  N4, N7, TB  -->
+
+	<EditText
+	    android:id="@+id/editText1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_alignParentTop="true"
+	    android:layout_marginTop="120dp"
+	    android:ems="10"
+	    android:gravity="center"
+	    android:hint="@string/editText1text" />
+
+	<TextView
+	    android:id="@+id/textView2"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/editText2"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:text="@string/cURLHelp"
+	    android:textColor="#6d6d6d" />
+
+	<EditText
+	    android:id="@+id/editText2"
+	    android:layout_width="255dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@+id/textView1"
+	    android:layout_marginTop="38dp"
+	    android:ems="10"
+	    android:gravity="center"
+	    android:hint="@string/custURL" />
+
+	<TextView
+	    android:id="@+id/textView3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/editText2"
+	    android:layout_alignBottom="@+id/editText2"
+	    android:layout_toLeftOf="@+id/editText2"
+	    android:text="http://is.gd/"
+	    android:layout_gravity="left"
+	    android:textSize="18sp" />
+
+	<ProgressBar
+	    android:id="@+id/progressBar1"
+	    style="?android:attr/progressBarStyleHorizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/adView"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="18dp"
+	    android:indeterminateOnly="true" />
 
 </RelativeLayout>
