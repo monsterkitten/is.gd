@@ -3,7 +3,7 @@ is.gd for Android
 
 An android application that uses the http://is.gd API to shorten URLs.
 
-<<<<<<< HEAD
+
 Downloading/Installing
 =======
  -You can grab the latest apk build here https://github.com/monsterkitten/is.gd/raw/master/out/is.gd.apk
@@ -13,9 +13,6 @@ Downloading/Installing
  -You can download it from the Play store here https://play.google.com/store/apps/details?id=com.monsterkitten.is_gd
  
 
-
-=======
->>>>>>> cd9fdb462610806593a13af7478db5a72ed3ec78
 Apache 2.0 liscense
 =======
 
