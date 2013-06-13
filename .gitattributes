@@ -19,5 +19,9 @@
 *.pdf  diff=astextplain
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
+<<<<<<< HEAD
 *.RTF	 diff=astextplain
 
+=======
+*.RTF	 diff=astextplain
+>>>>>>> cd9fdb462610806593a13af7478db5a72ed3ec78

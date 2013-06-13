@@ -8,7 +8,6 @@
 <resources>
     <string name="app_name">TinyWin</string>
     <string name="menu_go">Acortar URL</string>
-    <string name="editText1text">Entrar URL</string>
     <string name="logo_desc">TinyWin logo</string>
     <string name="git">Github</string>
     <string name="email">Contactar al desarrollador</string>
@@ -23,4 +22,9 @@
 	<!-- TODO: Add these translations -->
 	<string name="doesNotExist">The specified website does not exist or can\'t be reached.</string> 
 	<string name="noEC">There are no email clients installed.</string>
+	<string name="custURL">Custom short URL</string>
+	<string name="cURLHelp">Change what comes after http://is.gd/. Must be 5–30 characters. Leave blank for a random URL.</string>
+	<string name="editText1text">Long URL</string>
+	<string name="URLTaken">Custom short URL is already in use. Please choose another.</string>
+	<string name="badLength">The custom short URL must be between 5 and 30 characters.</string>
 </resources>
