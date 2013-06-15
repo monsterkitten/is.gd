@@ -10,7 +10,7 @@
     <string name="play">Play Store</string>
     <string name="http">Please enter the full URL (Including http://)!</string>
     <string name="license">Apache 2.0 license</string>
-    <string name="connectError">There was an error connecting, or the specified short URL is already in use or invalid. Please try again.</string>
+    <string name="connectError">There was an error connecting, please try again.</string>
     <string name="copiedToClip">Short URL copied to clipboard!</string>
     <string name="gotError">Received error message</string>
 	<string name="connectionError">Connection error.</string>
@@ -19,6 +19,7 @@
 	<string name="noEC">There are no email clients installed.</string>
 	<string name="custURL">Custom short URL</string>
 	<string name="cURLHelp">Change what comes after http://is.gd/. Must be 5–30 characters. Leave blank for a random URL.</string>
-	<string name="URLTaken">Custom short URL is already in use. Please choose another.</string>
+	<string name="URLTaken">The specified short URL is already in use or invalid. Please choose another.</string>
 	<string name="badLength">The custom short URL must be between 5 and 30 characters.</string>
+    <string name="wait">Too many requests, please wait before trying again.</string>
 </resources>

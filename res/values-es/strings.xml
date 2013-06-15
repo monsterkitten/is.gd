@@ -17,14 +17,14 @@
     <string name="connectError">Hubo un error al conectar, por favor intente de nuevo.</string>
     <string name="copiedToClip">URL abreviaba copiada al portapapeles!</string>
     <string name="gotError">Recibido mensaje de error</string>
-	<string name="connectionError">Error de conexi&#243;n.</string> <!-- Thanks devnull for helping with the encoding of the o with acute accent -->
-	<string name="badURL">Mala URL.</string>
-	<!-- TODO: Add these translations -->
-	<string name="doesNotExist">The specified website does not exist or can\'t be reached.</string> 
-	<string name="noEC">There are no email clients installed.</string>
-	<string name="custURL">Custom short URL</string>
-	<string name="cURLHelp">Change what comes after http://is.gd/. Must be 5–30 characters. Leave blank for a random URL.</string>
-	<string name="editText1text">Long URL</string>
-	<string name="URLTaken">Custom short URL is already in use. Please choose another.</string>
-	<string name="badLength">The custom short URL must be between 5 and 30 characters.</string>
+    <string name="connectionError">Error de conexi&#243;n.</string> <!-- Thanks devnull for helping with the encoding of the o with acute accent -->
+    <string name="badURL">Mala URL.</string>
+    <string name="doesNotExist">La página especificada no existe o no puede ser alcanzada.</string>
+    <string name="noEC">No hay clientes de correo instalados.</string>
+    <string name="custURL">URL abreviada personalizada</string>
+    <string name="cURLHelp">Cambie lo que viene después de http://is.gd/. Debe tener entre 5–30 characters. Dejar en blanco para una URL al azar.</string>
+    <string name="editText1text">URL larga</string>
+    <string name="URLTaken">URL personalizada ya está en uso o no es válido. Por favor elija otra.</string>
+    <string name="badLength">La URL personalizada debe tener entre 5 y 30 caracteres.</string>
+    <string name="wait">Demasiadas peticiones, por favor espere antes de intentar de nuevo.</string>
 </resources>

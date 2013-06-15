@@ -78,12 +78,12 @@
 	    android:id="@+id/textView3"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_alignBaseline="@+id/editText2"
-	    android:layout_alignBottom="@+id/editText2"
-	    android:layout_toLeftOf="@+id/editText2"
-	    android:text="http://is.gd/"
+        android:text="http://is.gd/"
 	    android:layout_gravity="left"
-	    android:textSize="18sp" />
+	    android:textSize="18sp"
+        android:layout_alignBaseline="@+id/editText2"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_toLeftOf="@+id/editText2"/>
 
 	<ProgressBar
 	    android:id="@+id/progressBar1"
