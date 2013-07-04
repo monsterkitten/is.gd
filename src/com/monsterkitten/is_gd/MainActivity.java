@@ -19,6 +19,7 @@ package com.monsterkitten.is_gd;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -220,7 +221,11 @@ class GetData extends AsyncTask<String, String, String> {
         String shorturl = "";
         if (!(params[1].equals(""))) {
             Log.d("Monsterkitten", "Params[1] is '" + params[1] + "'");
-            shorturl = "&shorturl=" + URLEncoder.encode(params[1]);
+            try {
+            shorturl = "&shorturl=" + URLEncoder.encode(params[1], "UTF-8");
+            } catch (UnsupportedEncodingException ex) {
+                Log.d("Monsterkitten", "UnsupportedEncodingException: " + ex);
+            }
         }
         //Make sure the site exists and the URL is well-formed
         //The former is for the sake of is.gd
@@ -246,7 +251,7 @@ class GetData extends AsyncTask<String, String, String> {
 
         try {
             // Create a URL for the desired page
-            String finalURL = "http://is.gd/create.php?format=simple&url=" + URLEncoder.encode(params[0]) + shorturl;
+            String finalURL = "http://is.gd/create.php?format=simple&url=" + URLEncoder.encode(params[0], "UTF-8") + shorturl;
             Log.d("Monsterkitten", "Variable finalURL set. (" + finalURL + ")");
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet(finalURL);
@@ -266,7 +271,7 @@ class GetData extends AsyncTask<String, String, String> {
                 if(code == 406) {
                     return "badShortURL";
                 }
-                if(code ==502) {
+                if(code == 502) {
                     return "pleaseWait";
                 }
                 if((code == 503)||(code == 404)) {

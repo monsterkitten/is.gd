@@ -1,3 +1,8 @@
+v1.0.3 - July 3, 2013
+-Remove ad
+-OCD-related fix(es)
+-Use un-deprecated URLEncoder method
+
 v1.0.2 - June 14, 2013
 -Migrate from java.net.URL to apache's HttpClient
 -Add version number to email subject
