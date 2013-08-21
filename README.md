@@ -10,8 +10,6 @@ Downloading/Installing
 
  -You can download it from the Play store here https://play.google.com/store/apps/details?id=com.monsterkitten.is_gd
 
- -You can download it from the Play store here https://play.google.com/store/apps/details?id=com.monsterkitten.is_gd
- 
 
 Apache 2.0 liscense
 =======
